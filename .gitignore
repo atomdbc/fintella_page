@@ -121,10 +121,10 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
-
+/innate-bucksaw-427516-i8-a8adc273cbde.json
 # yarn v2
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state.yml
 .yarn/install-state.gz
-.pnp.*
+.pnp.**.json

@@ -3,6 +3,8 @@ import nodemailer from 'nodemailer';
 import { google } from 'googleapis';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
@@ -26,6 +28,9 @@ const auth = new google.auth.JWT({
   scopes: SCOPES,
 });
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+
 const sheets = google.sheets({ version: 'v4', auth });
 
 // Email setup
@@ -39,6 +44,10 @@ const transporter = nodemailer.createTransport({
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
+});
+
+app.get('/about', (req, res) => {
+  res.sendFile(__dirname + '/public/about.html');
 });
 
 app.post('/join-waiting-list', async (req, res) => {
